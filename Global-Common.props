@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="ConfigurationMacros">
     <!--IsDebug: search for 'Debug' in Configuration-->
@@ -28,6 +28,7 @@
     <GDTProjectSuffix>$(GDTPlatformSuffix)$(GDTDebugSuffix)$(GDTBuildSuffix)</GDTProjectSuffix>
     <GDTProjectName>$(AdjustedProjectName)$(GDTProjectSuffix)</GDTProjectName>
     <GDTCRT>MD</GDTCRT>
+    <AMDTOutputDir>$(SolutionDir)..\Output\</AMDTOutputDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(GDT_BUILD)'==''">
     <GDT_BUILD>GDT_PUBLIC</GDT_BUILD>
@@ -73,6 +74,9 @@
     </BuildMacro>
     <BuildMacro Include="GDTCRT">
       <Value>$(GDTCRT)</Value>
+    </BuildMacro>
+    <BuildMacro Include="AMDTOutputDir">
+      <Value>$(AMDTOutputDir)</Value>
     </BuildMacro>
   </ItemGroup>
 </Project>
