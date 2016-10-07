@@ -47,6 +47,7 @@
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
+      <ImportLib>$(IntDir)$(TargetName).lib</ImportLib>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
     <Lib>
