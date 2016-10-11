@@ -19,14 +19,11 @@
     <Import Project="Global-x64.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros">
-    <ProjectHaveAMDPrefix>$(ProjectName.StartsWith('AMDT'))</ProjectHaveAMDPrefix>
-    <AdjustedProjectName Condition="$(ProjectHaveAMDPrefix)">CXL$(ProjectName.Remove(0,4))</AdjustedProjectName>
-    <AdjustedProjectName Condition="'$(ProjectHaveAMDPrefix)' == 'False'">$(ProjectName)</AdjustedProjectName>
     <GDTObjDir>$(SolutionDir)obj\</GDTObjDir>
     <GDTOutDir>$(SolutionDir)bin\</GDTOutDir>
     <GDTBuildSuffix>$(GDT_BUILD_SUFFIX)</GDTBuildSuffix>
     <GDTProjectSuffix>$(GDTPlatformSuffix)$(GDTDebugSuffix)$(GDTBuildSuffix)</GDTProjectSuffix>
-    <GDTProjectName>$(AdjustedProjectName)$(GDTProjectSuffix)</GDTProjectName>
+    <GDTProjectName>$(ProjectName)$(GDTProjectSuffix)</GDTProjectName>
     <GDTCRT>MD</GDTCRT>
     <AMDTOutputDir>$(SolutionDir)..\Output\</AMDTOutputDir>
   </PropertyGroup>
@@ -47,7 +44,7 @@
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
-      <ImportLib>$(IntDir)$(TargetName).lib</ImportLib>
+      <ImportLibrary>$(IntDir)$(TargetName).lib</ImportLibrary>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
     <Lib>
@@ -58,27 +55,7 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <BuildMacro Include="GDTObjDir">
-      <Value>$(GDTObjDir)</Value>
-    </BuildMacro>
-    <BuildMacro Include="GDTOutDir">
-      <Value>$(GDTOutDir)</Value>
-    </BuildMacro>
-    <BuildMacro Include="GDTBuildSuffix">
-      <Value>$(GDTBuildSuffix)</Value>
-    </BuildMacro>
-    <BuildMacro Include="GDTProjectSuffix">
-      <Value>$(GDTProjectSuffix)</Value>
-    </BuildMacro>
-    <BuildMacro Include="GDTProjectName">
-      <Value>$(GDTProjectName)</Value>
-    </BuildMacro>
-    <BuildMacro Include="GDTCRT">
-      <Value>$(GDTCRT)</Value>
-    </BuildMacro>
-    <BuildMacro Include="AMDTOutputDir">
-      <Value>$(AMDTOutputDir)</Value>
-    </BuildMacro>
-  </ItemGroup>
+  <ImportGroup Label="PropertySheets" Condition="Exists('$(SolutionDir)\Solution-Common.props')">
+    <Import Project="$(SolutionDir)\Solution-Common.props" />
+  </ImportGroup>
 </Project>
