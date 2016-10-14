@@ -6,6 +6,9 @@
     <!--IsRelease: search for 'Release' in Configuration-->
     <IsRelease>$([System.Convert]::ToString( $([System.Text.RegularExpressions.Regex]::IsMatch($(Configuration), '[Rr]elease'))))</IsRelease>
   </PropertyGroup>
+  <ImportGroup Label="PropertySheets" Condition="Exists('$(SolutionDir)\Solution-Common.props')">
+    <Import Project="$(SolutionDir)\Solution-Common.props" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="$([System.Convert]::ToBoolean($(IsDebug)))">
     <Import Project="Global-Debug.props" />
   </ImportGroup>
@@ -19,27 +22,31 @@
     <Import Project="Global-x64.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros">
-    <GDTObjDir>$(SolutionDir)obj\</GDTObjDir>
-    <GDTOutDir>$(SolutionDir)bin\</GDTOutDir>
+    <AMDTOutputDir Condition="'$(AMDTOutputDir)' == ''">$(SolutionDir)..\..\Output\</AMDTOutputDir>
+    <AMDTBuildSuffix>$(AMDT_BUILD_SUFFIX)</AMDTBuildSuffix>
+    <AMDTProjectSuffix Condition="'$(AMDTProjectSuffix)'==''">$(AMDTPlatformSuffix)$(AMDTDebugSuffix)$(AMDTBuildSuffix)</AMDTProjectSuffix>
+    <AMDTProjectName Condition="'$(AMDTProjectName)'==''">$(ProjectName)$(AMDTProjectSuffix)</AMDTProjectName>
+    <AMDTCRT Condition="'$(AMDTCRT)'==''">MD</AMDTCRT>
+    <AMDT_BUILD Condition="'$(AMDT_BUILD)'==''">AMDT_PUBLIC</AMDT_BUILD>
+    <!--  Following Macros are deprecated - retained for the short term until all projects are updated -->
+    <GDTObjDir>$(AMDTOutputDir)obj\</GDTObjDir>
+    <GDTOutDir>$(AMDTOutputDir)bin\</GDTOutDir>
     <GDTBuildSuffix>$(GDT_BUILD_SUFFIX)</GDTBuildSuffix>
     <GDTProjectSuffix>$(GDTPlatformSuffix)$(GDTDebugSuffix)$(GDTBuildSuffix)</GDTProjectSuffix>
-    <GDTProjectName>$(ProjectName)$(GDTProjectSuffix)</GDTProjectName>
+    <GDTProjectName Condition="'$(GDTProjectName)' == ''">$(ProjectName)$(GDTProjectSuffix)</GDTProjectName>
     <GDTCRT>MD</GDTCRT>
-    <AMDTOutputDir>$(SolutionDir)..\Output\</AMDTOutputDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(GDT_BUILD)'==''">
-    <GDT_BUILD>GDT_PUBLIC</GDT_BUILD>
+    <GDT_BUILD Condition="'$(GDT_BUILD)'==''">GDT_PUBLIC</GDT_BUILD>
   </PropertyGroup>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir>$(GDTOutDir)$(Configuration)-$(PlatformName)$(GDTBuildSuffix)\$(ProjectName)\</OutDir>
-    <IntDir>$(GDTObjDir)$(Configuration)-$(PlatformName)$(GDTBuildSuffix)\$(ProjectName)\</IntDir>
+    <OutDir>$(AMDTOutputDir)$(Configuration)\bin\</OutDir>
+    <IntDir>$(AMDTOutputDir)$(Configuration)\obj\$(ProjectName)\$(Platform)$(AMDTBuildSuffix)\</IntDir>
     <GenerateManifest>false</GenerateManifest>
-    <TargetName>$(GDTProjectName)</TargetName>
+    <TargetName Condition="'$(TargetName)'==''">$(AMDTProjectName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <PreprocessorDefinitions>$(GDT_BUILD);GDT_PLATFORM_SUFFIX="$(GDTPlatformSuffix)";GDT_PLATFORM_SUFFIX_W=L"$(GDTPlatformSuffix)";GDT_DEBUG_SUFFIX="$(GDTDebugSuffix)";GDT_DEBUG_SUFFIX_W=L"$(GDTDebugSuffix)";GDT_BUILD_SUFFIX="$(GDT_BUILD_SUFFIX)";GDT_BUILD_SUFFIX_W=L"$(GDT_BUILD_SUFFIX)";GDT_PROJECT_SUFFIX="$(GDTProjectSuffix)";GDT_PROJECT_SUFFIX_W=L"$(GDTProjectSuffix)";_WINDOWS;WIN32;WIN32_LEAN_AND_MEAN;SU_USE_NATIVE_STL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(GDT_BUILD);GDT_PLATFORM_SUFFIX="$(GDTPlatformSuffix)";GDT_PLATFORM_SUFFIX_W=L"$(GDTPlatformSuffix)";GDT_DEBUG_SUFFIX="$(GDTDebugSuffix)";GDT_DEBUG_SUFFIX_W=L"$(GDTDebugSuffix)";GDT_BUILD_SUFFIX="$(GDT_BUILD_SUFFIX)";GDT_BUILD_SUFFIX_W=L"$(GDT_BUILD_SUFFIX)";GDT_PROJECT_SUFFIX="$(GDTProjectSuffix)";GDT_PROJECT_SUFFIX_W=L"$(GDTProjectSuffix)";$(AMDT_BUILD);AMDT_PLATFORM_SUFFIX="$(AMDTPlatformSuffix)";AMDT_PLATFORM_SUFFIX_W=L"$(AMDTPlatformSuffix)";AMDT_DEBUG_SUFFIX="$(AMDTDebugSuffix)";AMDT_DEBUG_SUFFIX_W=L"$(AMDTDebugSuffix)";AMDT_BUILD_SUFFIX="$(AMDT_BUILD_SUFFIX)";AMDT_BUILD_SUFFIX_W=L"$(AMDT_BUILD_SUFFIX)";AMDT_PROJECT_SUFFIX="$(AMDTProjectSuffix)";AMDT_PROJECT_SUFFIX_W=L"$(AMDTProjectSuffix)";_WINDOWS;WIN32;WIN32_LEAN_AND_MEAN;SU_USE_NATIVE_STL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
@@ -51,11 +58,8 @@
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Lib>
     <ResourceCompile>
-      <PreprocessorDefinitions>GDT_PROJECT_SUFFIX="$(GDTProjectSuffix)";GDT_PROJECT_SUFFIX_W=L"$(GDTProjectSuffix)";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GDT_PROJECT_SUFFIX="$(GDTProjectSuffix)";GDT_PROJECT_SUFFIX_W=L"$(GDTProjectSuffix)"AMDT_PROJECT_SUFFIX="$(AMDTProjectSuffix)";AMDT_PROJECT_SUFFIX_W=L"$(AMDTProjectSuffix)";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0409</Culture>
     </ResourceCompile>
   </ItemDefinitionGroup>
-  <ImportGroup Label="PropertySheets" Condition="Exists('$(SolutionDir)\Solution-Common.props')">
-    <Import Project="$(SolutionDir)\Solution-Common.props" />
-  </ImportGroup>
 </Project>

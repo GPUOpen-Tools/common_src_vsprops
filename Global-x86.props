@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="UserMacros">
+    <AMDTPlatformExt Condition="'$(AMDTPlatformExt)' == ''">x86</AMDTPlatformExt>
+    <AMDTPlatformSuffix Condition="'$(AMDTPlatformSuffix)' == ''"></AMDTPlatformSuffix>
+    <AMDTPlatformSuffixNumBitsOnly Condition="'$(AMDTPlatformSuffixNumBitsOnly)' == ''"></AMDTPlatformSuffixNumBitsOnly>
+    <!-- Following macros are deprecated and will be removed at a later date -->
     <GDTPlatform>x86</GDTPlatform>
     <GDTPlatformExt>x86</GDTPlatformExt>
     <GDTPlatformSuffix></GDTPlatformSuffix>
@@ -14,18 +18,4 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <BuildMacro Include="GDTPlatform">
-      <Value>$(GDTPlatform)</Value>
-    </BuildMacro>
-    <BuildMacro Include="GDTPlatformExt">
-      <Value>$(GDTPlatformExt)</Value>
-    </BuildMacro>
-    <BuildMacro Include="GDTPlatformSuffix">
-      <Value>$(GDTPlatformSuffix)</Value>
-    </BuildMacro>
-    <BuildMacro Include="GDTPlatformSuffixNumBitsOnly">
-      <Value>$(GDTPlatformSuffixNumBitsOnly)</Value>
-    </BuildMacro>
-  </ItemGroup>
 </Project>

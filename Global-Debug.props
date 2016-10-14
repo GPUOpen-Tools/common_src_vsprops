@@ -1,6 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="UserMacros">
+    <AMDTDebugSuffix Condition="'$(AMDTDebugSuffix)' == ''">-d</AMDTDebugSuffix>
+    <AMDTDebugSuffixNoDash Condition="'$(AMDTDebugSuffixNoDash)' == ''">d</AMDTDebugSuffixNoDash>
+    <AMDTDebugSuffixUnderscore Condition="'$(AMDTDebugSuffixUnderscore)' == ''">_d</AMDTDebugSuffixUnderscore>
+    <!-- The following macros have been deprecated and will be removed in future -->
     <GDTDebugSuffix>-d</GDTDebugSuffix>
     <GDTDebugSuffixNoDash>d</GDTDebugSuffixNoDash>
     <GDTDebugSuffixUnderscore>_d</GDTDebugSuffixUnderscore>
@@ -26,15 +30,4 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <BuildMacro Include="GDTDebugSuffix">
-      <Value>$(GDTDebugSuffix)</Value>
-    </BuildMacro>
-    <BuildMacro Include="GDTDebugSuffixNoDash">
-      <Value>$(GDTDebugSuffixNoDash)</Value>
-    </BuildMacro>
-    <BuildMacro Include="GDTDebugSuffixUnderscore">
-      <Value>$(GDTDebugSuffixUnderscore)</Value>
-    </BuildMacro>
-  </ItemGroup>
 </Project>
