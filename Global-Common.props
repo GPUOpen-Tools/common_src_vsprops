@@ -42,7 +42,7 @@
     <OutDir>$(AMDTOutputDir)$(Configuration)\bin\</OutDir>
     <IntDir>$(AMDTOutputDir)$(Configuration)\obj\$(ProjectName)\$(Platform)$(AMDTBuildSuffix)\</IntDir>
     <GenerateManifest>false</GenerateManifest>
-    <TargetName Condition="'$(TargetName)'==''">$(AMDTProjectName)</TargetName>
+    <TargetName>$(AMDTProjectName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
