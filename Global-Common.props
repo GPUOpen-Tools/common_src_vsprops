@@ -39,8 +39,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir>$(AMDTOutputDir)$(Configuration)\bin\</OutDir>
-    <IntDir>$(AMDTOutputDir)$(Configuration)\obj\$(ProjectName)\$(Platform)$(AMDTBuildSuffix)\</IntDir>
+    <OutDir>$(AMDTOutputDir)$(Configuration)$(AMDTBuildSuffix)\bin\</OutDir>
+    <IntDir>$(AMDTOutputDir)$(Configuration)$(AMDTBuildSuffix)\obj\$(ProjectName)\$(Platform)$(AMDTBuildSuffix)\</IntDir>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(AMDTProjectName)</TargetName>
   </PropertyGroup>
