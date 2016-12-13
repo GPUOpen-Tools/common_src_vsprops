@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="UserMacros">
-    <AMDTPlatform Condition="'$(AMDTPlatform)' == ''">x86_64</AMDTPlatform>
+    <AMDTPlatform Condition="'$(AMDTPlatform)' == ''">x64</AMDTPlatform>
     <AMDTPlatformExt Condition="'$(AMDTPlatformExt)' == ''">x86_64</AMDTPlatformExt>
     <AMDTPlatformSuffix Condition="'$(AMDTPlatformSuffix)' == ''">-x64</AMDTPlatformSuffix>
     <AMDTPlatformSuffixNumBitsOnly Condition="'$(AMDTPlatformSuffixNumBitsOnly)' == ''">64</AMDTPlatformSuffixNumBitsOnly>
