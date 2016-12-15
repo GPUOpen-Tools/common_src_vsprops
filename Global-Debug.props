@@ -4,10 +4,6 @@
     <AMDTDebugSuffix Condition="'$(AMDTDebugSuffix)' == ''">-d</AMDTDebugSuffix>
     <AMDTDebugSuffixNoDash Condition="'$(AMDTDebugSuffixNoDash)' == ''">d</AMDTDebugSuffixNoDash>
     <AMDTDebugSuffixUnderscore Condition="'$(AMDTDebugSuffixUnderscore)' == ''">_d</AMDTDebugSuffixUnderscore>
-    <!-- The following macros have been deprecated and will be removed in future -->
-    <GDTDebugSuffix>-d</GDTDebugSuffix>
-    <GDTDebugSuffixNoDash>d</GDTDebugSuffixNoDash>
-    <GDTDebugSuffixUnderscore>_d</GDTDebugSuffixUnderscore>
   </PropertyGroup>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>

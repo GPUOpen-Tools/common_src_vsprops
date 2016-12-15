@@ -5,11 +5,6 @@
     <AMDTPlatformExt Condition="'$(AMDTPlatformExt)' == ''">x86_64</AMDTPlatformExt>
     <AMDTPlatformSuffix Condition="'$(AMDTPlatformSuffix)' == ''">-x64</AMDTPlatformSuffix>
     <AMDTPlatformSuffixNumBitsOnly Condition="'$(AMDTPlatformSuffixNumBitsOnly)' == ''">64</AMDTPlatformSuffixNumBitsOnly>
-    <!-- The following macros have been deprecated and will be removed at a later date -->
-    <GDTPlatform>x64</GDTPlatform>
-    <GDTPlatformExt>x86_64</GDTPlatformExt>
-    <GDTPlatformSuffix>-x64</GDTPlatformSuffix>
-    <GDTPlatformSuffixNumBitsOnly>64</GDTPlatformSuffixNumBitsOnly>
   </PropertyGroup>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>

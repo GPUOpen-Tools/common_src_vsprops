@@ -28,25 +28,17 @@
     <AMDTProjectName Condition="'$(AMDTProjectName)'==''">$(ProjectName)$(AMDTProjectSuffix)</AMDTProjectName>
     <AMDTCRT Condition="'$(AMDTCRT)'==''">MD</AMDTCRT>
     <AMDT_BUILD Condition="'$(AMDT_BUILD)'==''">AMDT_PUBLIC</AMDT_BUILD>
-    <!--  Following Macros are deprecated - retained for the short term until all projects are updated -->
-    <GDTObjDir>$(AMDTOutputDir)obj\</GDTObjDir>
-    <GDTOutDir>$(AMDTOutputDir)bin\</GDTOutDir>
-    <GDTBuildSuffix>$(GDT_BUILD_SUFFIX)</GDTBuildSuffix>
-    <GDTProjectSuffix>$(GDTPlatformSuffix)$(GDTDebugSuffix)$(GDTBuildSuffix)</GDTProjectSuffix>
-    <GDTProjectName Condition="'$(GDTProjectName)' == ''">$(ProjectName)$(GDTProjectSuffix)</GDTProjectName>
-    <GDTCRT>MD</GDTCRT>
-    <GDT_BUILD Condition="'$(GDT_BUILD)'==''">GDT_PUBLIC</GDT_BUILD>
   </PropertyGroup>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir>$(AMDTOutputDir)$(Configuration)$(AMDTBuildSuffix)\bin\</OutDir>
-    <IntDir>$(AMDTOutputDir)$(Configuration)$(AMDTBuildSuffix)\obj\$(ProjectName)\$(Platform)$(AMDTBuildSuffix)\</IntDir>
+    <OutDir>$(AMDTOutputDir)$(Configuration)\bin\</OutDir>
+    <IntDir>$(AMDTOutputDir)$(Configuration)\obj\$(ProjectName)\$(Platform)$(AMDTBuildSuffix)\</IntDir>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(AMDTProjectName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <PreprocessorDefinitions>$(GDT_BUILD);GDT_PLATFORM_SUFFIX="$(GDTPlatformSuffix)";GDT_PLATFORM_SUFFIX_W=L"$(GDTPlatformSuffix)";GDT_DEBUG_SUFFIX="$(GDTDebugSuffix)";GDT_DEBUG_SUFFIX_W=L"$(GDTDebugSuffix)";GDT_BUILD_SUFFIX="$(GDT_BUILD_SUFFIX)";GDT_BUILD_SUFFIX_W=L"$(GDT_BUILD_SUFFIX)";GDT_PROJECT_SUFFIX="$(GDTProjectSuffix)";GDT_PROJECT_SUFFIX_W=L"$(GDTProjectSuffix)";$(AMDT_BUILD);AMDT_PLATFORM_SUFFIX="$(AMDTPlatformSuffix)";AMDT_PLATFORM_SUFFIX_W=L"$(AMDTPlatformSuffix)";AMDT_DEBUG_SUFFIX="$(AMDTDebugSuffix)";AMDT_DEBUG_SUFFIX_W=L"$(AMDTDebugSuffix)";AMDT_BUILD_SUFFIX="$(AMDT_BUILD_SUFFIX)";AMDT_BUILD_SUFFIX_W=L"$(AMDT_BUILD_SUFFIX)";AMDT_PROJECT_SUFFIX="$(AMDTProjectSuffix)";AMDT_PROJECT_SUFFIX_W=L"$(AMDTProjectSuffix)";_WINDOWS;WIN32;WIN32_LEAN_AND_MEAN;SU_USE_NATIVE_STL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(AMDT_BUILD);AMDT_PLATFORM_SUFFIX="$(AMDTPlatformSuffix)";AMDT_PLATFORM_SUFFIX_W=L"$(AMDTPlatformSuffix)";AMDT_DEBUG_SUFFIX="$(AMDTDebugSuffix)";AMDT_DEBUG_SUFFIX_W=L"$(AMDTDebugSuffix)";AMDT_BUILD_SUFFIX="$(AMDT_BUILD_SUFFIX)";AMDT_BUILD_SUFFIX_W=L"$(AMDT_BUILD_SUFFIX)";AMDT_PROJECT_SUFFIX="$(AMDTProjectSuffix)";AMDT_PROJECT_SUFFIX_W=L"$(AMDTProjectSuffix)";_WINDOWS;WIN32;WIN32_LEAN_AND_MEAN;SU_USE_NATIVE_STL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
@@ -58,7 +50,7 @@
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Lib>
     <ResourceCompile>
-      <PreprocessorDefinitions>GDT_PROJECT_SUFFIX="$(GDTProjectSuffix)";GDT_PROJECT_SUFFIX_W=L"$(GDTProjectSuffix)"AMDT_PROJECT_SUFFIX="$(AMDTProjectSuffix)";AMDT_PROJECT_SUFFIX_W=L"$(AMDTProjectSuffix)";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>AMDT_PROJECT_SUFFIX="$(AMDTProjectSuffix)";AMDT_PROJECT_SUFFIX_W=L"$(AMDTProjectSuffix)";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0409</Culture>
     </ResourceCompile>
   </ItemDefinitionGroup>

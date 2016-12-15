@@ -4,10 +4,6 @@
     <AMDTDebugSuffix />
     <AMDTDebugSuffixNoDash />
     <AMDTDebugSuffixUnderscore />
-    <!-- The following macros have been deprecated and will be removed at a later date -->
-    <GDTDebugSuffix />
-    <GDTDebugSuffixNoDash />
-    <GDTDebugSuffixUnderscore />
   </PropertyGroup>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
