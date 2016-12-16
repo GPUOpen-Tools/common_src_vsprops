@@ -13,5 +13,8 @@
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
+    <Lib>
+      <AdditionalOptions>/MACHINE:X86 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
   </ItemDefinitionGroup>
 </Project>
